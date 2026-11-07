@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://umratuhum.com/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/umrah-badal.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/umrah-badal.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/how-it-works.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/how-it-works.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/faq.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/faq.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/performers.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/performers.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/about.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/contact.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/contact.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/privacy.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/terms.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/terms.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/refund.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/refund.html"/>
+  </url>
+</urlset>
