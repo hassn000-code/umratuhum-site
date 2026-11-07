@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <rect width="640" height="400" rx="28" fill="#2E2660"/>
+  <rect x="24" y="24" width="592" height="352" rx="20" fill="#FFF6EC"/>
+  <rect x="48" y="52" width="150" height="190" rx="14" fill="#DAD7E4"/>
+  <circle cx="123" cy="122" r="38" fill="#B5B0C2"/>
+  <path d="M63 232c10-40 45-60 60-60s50 20 60 60z" fill="#B5B0C2"/>
+  <rect x="230" y="60" width="330" height="22" rx="8" fill="#221B4B" opacity=".85"/>
+  <rect x="230" y="100" width="260" height="16" rx="7" fill="#8E8798" opacity=".6"/>
+  <rect x="230" y="134" width="300" height="16" rx="7" fill="#8E8798" opacity=".6"/>
+  <rect x="230" y="168" width="200" height="16" rx="7" fill="#8E8798" opacity=".6"/>
+  <rect x="230" y="212" width="330" height="30" rx="10" fill="#F4A259" opacity=".9"/>
+  <rect x="48" y="276" width="544" height="60" rx="14" fill="#221B4B" opacity=".08"/>
+  <text x="320" y="314" text-anchor="middle" font-family="sans-serif" font-size="20" fill="#221B4B" opacity=".55">صورة تجريبية لوجه الهوية الأمامي</text>
+</svg>
