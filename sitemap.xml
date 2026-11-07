@@ -70,4 +70,11 @@
     <priority>0.3</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/refund.html"/>
   </url>
+  <url>
+    <loc>https://umratuhum.com/verify.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/verify.html"/>
+  </url>
 </urlset>
