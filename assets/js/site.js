@@ -84,12 +84,12 @@
       { id: 'ramadan', name: 'عمرة رمضان', umrah_count: 1, sla_hours: 720, enabled: true, seasonal: true, allows_dua: true, priority: false, sort: 6 }
     ],
     prices: {
-      premium: { SAR: 399, AED: 389, KWD: 32.5, QAR: 389, BHD: 40, OMR: 41 },
-      basic: { SAR: 299, AED: 289, KWD: 24.5, QAR: 289, BHD: 30, OMR: 30.5 },
-      express: { SAR: 499, AED: 489, KWD: 41, QAR: 489, BHD: 50, OMR: 51 },
-      parents: { SAR: 549, AED: 539, KWD: 45, QAR: 529, BHD: 55, OMR: 56.5 },
-      wafa: { SAR: 1199, AED: 1179, KWD: 98.5, QAR: 1159, BHD: 120, OMR: 123 },
-      ramadan: { SAR: 599, AED: 589, KWD: 49, QAR: 579, BHD: 60, OMR: 61.5 }
+      premium: { SAR: 599, AED: 589, KWD: 49, QAR: 579, BHD: 59.5, OMR: 61 },
+      basic: { SAR: 499, AED: 489, KWD: 40.5, QAR: 485, BHD: 49.5, OMR: 51 },
+      express: { SAR: 799, AED: 789, KWD: 65, QAR: 779, BHD: 79.5, OMR: 81.5 },
+      parents: { SAR: 899, AED: 879, KWD: 73.5, QAR: 869, BHD: 89.5, OMR: 91.5 },
+      wafa: { SAR: 1999, AED: 1949, KWD: 163.5, QAR: 1939, BHD: 199, OMR: 204.5 },
+      ramadan: { SAR: 799, AED: 789, KWD: 65, QAR: 779, BHD: 79.5, OMR: 81.5 }
     }
   };
 
@@ -111,7 +111,8 @@
   }
   function umrahLabel(n) { return n === 1 ? 'عمرة واحدة' : n === 2 ? 'عمرتان' : n + ' عمرات'; }
   function money(n, c) {
-    return Number(n).toLocaleString('en-US', { minimumFractionDigits: c.dec, maximumFractionDigits: c.dec });
+    var v = Number(n), whole = v % 1 === 0; // مثل التطبيق: 499 بدون كسور، و40.500 بخانات الدينار
+    return v.toLocaleString('en-US', { minimumFractionDigits: whole ? 0 : c.dec, maximumFractionDigits: c.dec });
   }
 
   var pkgRoot = document.getElementById('pkgs');
