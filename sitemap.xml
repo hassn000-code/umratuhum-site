@@ -77,4 +77,18 @@
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/verify.html"/>
   </url>
+  <url>
+    <loc>https://umratuhum.com/umrah-for-deceased-mother.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/umrah-for-deceased-mother.html"/>
+  </url>
+  <url>
+    <loc>https://umratuhum.com/umrah-badal-price.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://umratuhum.com/umrah-badal-price.html"/>
+  </url>
 </urlset>
