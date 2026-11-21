@@ -63,6 +63,9 @@
     select(start);
   });
 
+  /* رابط المتجر: مكان واحد يتغيّر لو تغيّر الرابط */
+  var STORE = 'https://salla.sa/umratuhum';
+
   /* الباقات والأسعار */
   var COUNTRIES = [
     { code: 'SA', name: 'السعودية', flag: '🇸🇦', cur: 'SAR', sym: 'ر.س', dec: 2 },
@@ -83,6 +86,11 @@
       { id: 'wafa', name: 'باقة الوفاء', umrah_count: 5, sla_hours: 720, enabled: true, seasonal: false, allows_dua: false, priority: false, sort: 5 },
       { id: 'ramadan', name: 'عمرة رمضان', umrah_count: 1, sla_hours: 720, enabled: true, seasonal: true, allows_dua: true, priority: false, sort: 6 }
     ],
+    /* باقات تُباع في المتجر وغير موجودة في خادم التطبيق: تُضاف دائمًا حتى مع الأسعار الحية */
+    extra: [
+      { id: 'friday', name: 'عمرة البدل يوم الجمعة', umrah_count: 1, sla_hours: 168, enabled: true, seasonal: false, allows_dua: true, priority: false, sort: 3.5, sla_label: 'يوم الجمعة' }
+    ],
+    extraPrices: { friday: { SAR: 699 } },
     prices: {
       premium: { SAR: 599, AED: 589, KWD: 49, QAR: 579, BHD: 59.5, OMR: 61 },
       basic: { SAR: 499, AED: 489, KWD: 40.5, QAR: 485, BHD: 49.5, OMR: 51 },
@@ -100,10 +108,12 @@
     express: { badge: 'عاجل', short: 'أولوية في الإسناد، وتنفيذ خلال 24 ساعة حسب توفّر التصاريح.', features: ['أولوية في إسناد المؤدي', 'تنفيذ خلال 24 ساعة حسب تصاريح نسك', 'توثيق كامل لكل المراحل وشهادة إتمام', 'إذا تعذّر التنفيذ في الوقت نسترد لك الفرق'] },
     parents: { short: 'عمرتان: عن الأب وعن الأم، بتوثيق كامل وشهادتين باسميهما.', features: ['عمرتان مستقلتان عن الأب وعن الأم', 'النية باسم كل واحد منهما', 'شهادتا إتمام باسميهما', 'أوفر من طلب عمرتين منفصلتين'] },
     wafa: { short: 'خمس عمرات على مدى شهر، تقدر توزّعها على أكثر من شخص.', features: ['خمس عمرات، تقريبًا عمرة كل أسبوع', 'توزّعها على أكثر من شخص', 'توثيق كامل وخمس شهادات إتمام'] },
+    friday: { badge: 'جديد', short: 'تُؤدّى في أقرب يوم جمعة، بتوثيق كامل ودعاء خاص وشهادة إتمام باسمه.', features: ['موعد مؤكد في يوم الجمعة حسب التصاريح', 'دعاء خاص بنصّك عند الملتزم', 'توثيق كامل لكل المراحل وشهادة إتمام'] },
     ramadan: { badge: 'موسمي', short: 'في أيام رمضان أو العشر الأواخر، والعدد محدود فاحجز مبكرًا.', features: ['سعر لأيام رمضان وسعر للعشر الأواخر، يظهر لك عند الحجز', 'توثيق كامل وشهادة إتمام باسمه', 'العدد محدود حسب المؤدين والتصاريح'] }
   };
 
   function slaLabel(p) {
+    if (p.sla_label) return p.sla_label;
     if (p.seasonal) return 'في رمضان';
     if (p.sla_hours <= 72) return 'خلال ' + p.sla_hours + ' ساعة';
     if (p.sla_hours <= 168) return 'خلال ' + Math.round(p.sla_hours / 24) + ' أيام';
@@ -151,10 +161,13 @@
 
     function renderPkgs() {
       var c = COUNTRIES.filter(function (x) { return x.code === current; })[0];
-      var list = data.packages.filter(function (p) { return p.enabled !== false; }).sort(function (a, b) { return a.sort - b.sort; });
+      var list = data.packages.filter(function (p) { return !FALLBACK.extraPrices[p.id]; }).concat(FALLBACK.extra).filter(function (p) { return p.enabled !== false; }).sort(function (a, b) { return a.sort - b.sort; });
       pkgRoot.innerHTML = list.map(function (p) {
         var m = META[p.id] || { short: '', features: [] };
-        var price = (data.prices[p.id] || {})[c.cur];
+        var price = (FALLBACK.extraPrices[p.id] || data.prices[p.id] || {})[c.cur];
+        var sarOnly = price == null && FALLBACK.extraPrices[p.id];
+        if (sarOnly) price = FALLBACK.extraPrices[p.id].SAR;
+        var pc = sarOnly ? COUNTRIES[0] : c;
         var badges = '';
         if (m.badge) badges += '<span class="badge' + (m.hot ? ' badge--saffron' : '') + '">' + m.badge + '</span>';
         badges += '<span class="badge badge--line">' + umrahLabel(p.umrah_count) + '</span>';
@@ -162,10 +175,10 @@
           '<div class="pkg__badges">' + badges + '</div>' +
           '<h3>' + p.name + '</h3>' +
           '<p class="pkg__short">' + m.short + '</p>' +
-          '<div class="pkg__price">' + (price != null ? '<b>' + money(price, c) + '</b><span>' + c.sym + '</span>' : '<span>السعر يظهر في التطبيق</span>') + '</div>' +
+          '<div class="pkg__price">' + (price != null ? '<b>' + money(price, pc) + '</b><span>' + pc.sym + '</span>' : '<span>السعر يظهر في المتجر</span>') + '</div>' +
           '<div class="pkg__meta"><span>شامل الضريبة</span><span>' + slaLabel(p) + '</span>' + (p.allows_dua ? '<span>دعاء خاص</span>' : '') + '</div>' +
           '<ul class="pkg__feat">' + m.features.map(function (f) { return '<li>' + f + '</li>'; }).join('') + '</ul>' +
-          '<a class="btn ' + (m.hot ? 'btn--primary' : 'btn--ghost') + ' btn--block" href="#download">اطلبها من التطبيق</a>' +
+          '<a class="btn ' + (m.hot ? 'btn--primary' : 'btn--ghost') + ' btn--block" href="' + STORE + '">اطلبها من المتجر</a>' +
           '</article>';
       }).join('');
       var note = document.getElementById('pkgs-note');
