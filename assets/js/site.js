@@ -64,7 +64,7 @@
   });
 
   /* رابط المتجر: مكان واحد يتغيّر لو تغيّر الرابط */
-  var STORE = 'https://salla.sa/umratuhum';
+  var STORE = 'https://store.umratuhum.com';
 
   /* الباقات والأسعار */
   var COUNTRIES = [
